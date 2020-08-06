@@ -1,12 +1,15 @@
-var file = document.getElementById("myFile");
-var audio = document.getElementById("myAudio");
+var file = document.getElementById("File");
+var audio = document.getElementById("Audio");
 var timeText = document.getElementById("time");
 var audioName = document.getElementById("name");
 var selectAudio = document.getElementById("audio_List");
-var progress = document.getElementById("myProgress");
-var progressParent = document.getElementById("asd");
-
-
+var progress = document.getElementById("Progress");
+var progressBar = document.getElementById("ProgressBar");
+var volume = document.getElementById("Volume");
+var volumeBar = document.getElementById("VolumeBar");
+var playButton = document.getElementById("playButton");
+var pauseButton = document.getElementById("pauseButton");
+var volumeIcon = document.getElementById("volumeIcon");
 
 const customBtn = document.getElementById("custom-button");
 
@@ -18,10 +21,16 @@ file.addEventListener("change", handleFiles, false);
 
 function handleFiles(event) {
     var files = event.target.files;
-    var option = document.createElement("option");
-    option.text = files[0].name;
-    option.value = URL.createObjectURL(files[0])
-    selectAudio.add(option);
+    var option;
+
+
+    for (const file of files) {
+        option = document.createElement("option");
+        option.text = file.name;
+        option.value = URL.createObjectURL(file)
+        selectAudio.add(option);
+    }
+    
     
 }
 
@@ -32,37 +41,80 @@ function loadAudio() {
 
 function getLocation(event) {
     event.stopPropagation();
-    var rate = (event.offsetX / progressParent.clientWidth) * 100
+    let rate = (event.offsetX / progress.clientWidth) * 100;
     audio.currentTime = rate * (audio.duration / 100);
-    console.log(event);
 }
 
+
+function setVolume(event){
+    event.stopPropagation();
+    let rate = (event.offsetX / volume.clientWidth);
+    if(rate < 0.1){
+        audio.volume = 0;
+        volumeIcon.innerHTML = "volume_off";
+    }
+    else{
+        audio.volume = rate;
+        volumeIcon.innerHTML = "volume_up";
+    }
+}
+
+function mute(){
+    if(volumeIcon.innerHTML == "volume_up"){
+        audio.volume = 0;
+        volumeIcon.innerHTML = "volume_off";
+    }
+    else{
+        audio.volume = 0.5;
+        volumeIcon.innerHTML = "volume_up";
+    }
+    
+}
 
 
 
 function playAudio() {
-    audio.play();
+    if(isNaN(audio.currentSrc)){
+        audio.play();
+        playButton.style.display = "none";
+        pauseButton.style.display = "inline";
+    }
 }
-
-
 function pauseAudio() {
-    audio.pause();
+    if(!audio.paused){
+        audio.pause();
+        playButton.style.display = "inline";
+        pauseButton.style.display = "none";
+    }
+}
+function stopAudio(){
+    pauseAudio();
+    audio.currentTime = 0;
 }
 
 var audioDuration;
+var audioDurationString;
 
 audio.ontimeupdate = function() {
-    progress.style.width = ((audio.currentTime / audioDuration) * 100) + "%";
-    timeText.innerHTML = timeSetFormat(audio.currentTime.toFixed());
+    progressBar.style.width = ((audio.currentTime / audioDuration) * 100) + "%";
+    timeText.innerHTML = timeSetFormat(audio.currentTime.toFixed()) + ' / ' + audioDurationString;
 };
+
+audio.onvolumechange = function() {
+    volumeBar.style.width = (audio.volume * 100) + "%";
+}
 
 audio.ondurationchange = function()
 {
     audioDuration = audio.duration.toFixed();
-    timeText.innerHTML = timeSetFormat(audio.currentTime.toFixed());
+    audioDurationString = timeSetFormat(audio.duration.toFixed());
+    timeText.innerHTML = "0:00 / " + audioDurationString;
 }
 
-function timeSetFormat(seconds){
-    // saniye dakika cinsinden yazdır
-    return seconds + ' / ' + audioDuration;
+function timeSetFormat(currentTime){
+    minutes = Math.floor(currentTime / 60);
+    seconds = currentTime - (minutes * 60);
+    timeString = minutes.toString().padStart(1, '0') + ':' + seconds.toString().padStart(2, '0');
+
+    return timeString;
 }
