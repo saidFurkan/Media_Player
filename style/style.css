@@ -1,0 +1,37 @@
+body{
+    color:gainsboro;  
+    font-family: 'Kadwa';font-size: 20px;
+}
+
+.centerPage{
+    align-items: center; 
+    text-align: center; 
+    height:100vh;
+}
+
+.backGround{
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                            supported by Chrome, Edge, Opera and Firefox */
+}
+span {
+    cursor: pointer;
+    font-size: 32px !important;
+}

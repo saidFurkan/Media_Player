@@ -1,128 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Music page</title>
-        <link rel="icon" href="icons/scheme.ico" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta charset="UTF-8" />
+    <title>Music page</title>
+    <link rel="icon" href="icons/scheme.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
 
-        <style>
-            body{
-                color:gainsboro;  
-            }
+    <link href='https://fonts.googleapis.com/css?family=Kadwa' rel='stylesheet'>
+    <!-- Fugaz One -->
 
-            .slidecontainer {
-                width: 100%;
-            }
-
-            .slider {
-                -webkit-appearance: none;
-                width: 100%;
-                height: 25px;
-                background: #d3d3d3;
-                outline: none;
-                opacity: 0.7;
-                -webkit-transition: .2s;
-                transition: opacity .2s;
-            }
-
-            .centerPage{
-                align-items: center; 
-                text-align: center; 
-                height:100vh;
-            }
-
-            .backGround{
-                overflow: hidden;
-                position: absolute;
-                z-index: -1;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
-            }
-        </style>
-    </head>
+</head>
 
 
 
-    <body >
-        
+<body >
+<div class="backGround noselect" style="overflow-y: auto;">
+    <div class="row centerPage">
+        <div class="col-md-8 ">
+            <audio id="Audio" src=""> Your browser does not support the audio format. </audio>
 
-        <div class="backGround" style="overflow-y: auto;">
-            <div  >
-                <div class="row centerPage">
-                    <div class="col-md-8">
-                        <audio id="Audio" src=""> Your browser does not support the audio format. </audio>
-    
-                        <h2 id="name" class="p-2">No sound selected</h2>
-    
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <div class="progress d-inline-block" id="Progress" style="width: calc(100% - 120px); min-width: 200px; height: 24px; position: relative; margin: 1%;" onclick="getLocation(event)">
-                                    <div class="progress-bar" id="ProgressBar" role="progressbar" style="width: 0%; height: 100%; transition: width 0.4s;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>    
-                                <div class="d-inline-block" style="position: relative; top: -15%;  margin-top: 5%;" id="time">0:00 / 0:00</div>
-                                
-                            </div>
-                           <div class="col-md-12">         
-                                <i id="playButton" onclick="playAudio()" class="material-icons" style="cursor: pointer; display: inline; width: 24px; height: 24px;">play_arrow</i>
-                                <i id="pauseButton" onclick="pauseAudio()" class="material-icons" style="cursor: pointer; display: none; width: 24px; height: 24px;">pause</i>
-                                <i onclick="stopAudio()" class="material-icons" style="cursor: pointer">stop</i>
-                                <div class="float-right" style="margin-right:5px ;">
-                                    <i id="volumeIcon" onclick="mute()" class="material-icons" style="cursor: pointer; margin-left:auto">volume_up</i>
-                                    <div class="progress d-inline-block" id="Volume" style="width: 25%; min-width: 60px; height: 50%; min-height: 10px; position: relative; top:-6px;" onclick="setVolume(event)">
-                                        <div class="progress-bar" id="VolumeBar" role="progressbar" style="width: 100%; height: 10px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                    
-
-                            <!-- <div class="col-md-4 p-2">
-                                <button class="btn btn-success btn-block " onclick="playAudio()" type="button">Play </button>
-                            </div >
-                            <div class="col-md-4 p-2">
-                                <button class="btn btn-danger btn-block " onclick="pauseAudio()" type="button">Pause</button>
-                            </div> -->
-                            
-                        </div>                        
-                    </div>
+            <h2 id="name" class="p-2">No sound selected</h2>
 
 
-                    <div class="col-md-4">
-                        <div style="height:50vh;">
-                            <h3>Audio List</h3>
-                            <select class="custom-select p-2" onchange="loadAudio()" name="audios" id="audio_List" multiple style="width: 85%; height: 35vh; overflow: auto;" >
-                            </select>
-                            
-                            <div style="margin: 10px;">
-                                <input type="file" name="files" id="File" accept="audio/*" multiple hidden />
-                                <button class="btn btn-success" type="button" id="custom-button">
-                                    <span class="material-icons"> playlist_add </span>
-                                    Add Audio
-                                </button>
-                            </div>
-                            
-                        </div>                       
-                    </div>
+            <div class="row">
+                <div class="col-md-12 mb-3 mt-3">
+                    <span onclick="loadAudio(-1)" class="material-icons align-middle" >skip_previous</span>
+                    <span id="playButton" onclick="playAudio()" class="material-icons align-middle mx-5" style=" display: inline; font-size: 48px !important;">play_arrow</span>
+                    <span id="pauseButton" onclick="pauseAudio()" class="material-icons align-middle mx-5" style=" display: none; font-size: 48px !important;">pause</span>
+                    <!-- <i onclick="stopAudio()" class="material-icons" style=" font-size: 32px;">stop</i> onclick="getLocation(event)"-->
+                    <span onclick="loadAudio(1)" class="material-icons align-middle">skip_next</span>
                 </div>
-            </div>
+
+                <div class="col-md-12">
+                    <p class="d-inline-block m-0"  id="currentTime">0:00</p>
+                    <div class="progress d-inline-block mx-1" id="Progress" style="width: calc(100% - 110px - 6rem); min-width: 200px; height: 16px; position: relative;" >
+                        <div class="progress-bar" id="ProgressBar" role="progressbar" style="width: 0%; height: 100%; " aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>    
+                    <p class="d-inline-block m-0" id="durationTime">0:00</p>
+                    
+                </div>
+
+                <div class="col-md-12 d-flex justify-content-end align-items-center mt-2" >
+                        <span id="volumeIcon" onclick="mute()" class="material-icons">volume_up</span>
+                        <div class="progress d-inline-block" id="Volume" style="width: 15%; min-width: 60px; height: 15%; min-height: 10px; position: relative; margin-right: 3rem;" onclick="setVolume(event)">
+                            <div class="progress-bar" id="VolumeBar" role="progressbar" style="width: 100%; height: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                </div>
+                
+            </div>                            
         </div>
-        
-    
-
-        <script src="scripts/musicScript.js" type="text/javascript"></script>
 
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  
-    </body>
+        <div class="col-md-4">
+            <!-- <div style="height:50vh;"> -->
+            <div style="min-height: 250px; max-height: 600px;">
+                <h3>Audio List</h3>
+                <select class="custom-select p-2" onchange="loadAudio(0)" name="audios" id="audio_List" multiple style="width: 85%; min-height: 250px; max-height: 800px; overflow: auto;" >
+                </select>
+                
+                <div style="margin: 10px;">
+                    <input type="file" name="files" id="File" accept="audio/*" multiple hidden>
+                        <span class="material-icons mr-3" id="custom-button" > playlist_add </span></input>
+                    <span class="material-icons ml-3" onclick="shuffle()" >shuffle</span>
+
+                </div>
+                
+            </div>                       
+        </div>
+    </div>
+</div>
+
+
+
+<script src="scripts/musicScript.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
 </html>
