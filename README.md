@@ -1,5 +1,5 @@
 # Media_Player
-<<<<<<< HEAD
+
 Kullanıcının lokalindeki ses ve video dosyalarını tarayıcı üzerinden görüntülemeye yarayan bir projedir. Ayrıca ana sayfada node.js'in ytdl-core kütüphanesi ile çalışan bir youtube linkindeki videoyu mp3 veya mp4 formatında dosya indirmeye yarayan bir uygulama bulunmaktadır.
 
 Youtube downloader uygulamasını çalıştırmak için öncelikle server dizininde konsoldan "npm install" ile gerekli gereksinimlerin yüklenmesi gerekir. Ardından "npm index.js" ile server 8000. portta çalışmaya başlar.
