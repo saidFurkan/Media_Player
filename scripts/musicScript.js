@@ -73,6 +73,21 @@ function getLocation(event) {
 
 var mouseMoving = false;
 
+/* var asd = false;
+
+progress.onmousedown = function(){
+    asd = true;
+}
+document.onmouseup = function(){
+    asd = false;
+}
+
+progress.onpointermove = function(e){
+    if(asd){        
+        progressBar.style.width = ((e.offsetX / progress.clientWidth) * 100) + "%";
+    }
+}*/
+
 progress.addEventListener("mousedown", function(e){
     if( isNaN(audio.duration)){
         return;
@@ -174,7 +189,7 @@ function setVolume(event){
 }
 
 function mute(){
-    if(volumeIcon.innerHTML == "volume_up"){
+    if(!volumeIcon.innerHTML == "volume_off"){
         audio.volume = 0;
         volumeIcon.innerHTML = "volume_off";
     }

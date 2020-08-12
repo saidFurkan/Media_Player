@@ -6,7 +6,8 @@ body{
 .centerPage{
     align-items: center; 
     text-align: center; 
-    height:100vh;
+    margin-top: 10vh;
+    height:90vh;
 }
 
 .backGround{
@@ -34,4 +35,55 @@ body{
 span {
     cursor: pointer;
     font-size: 32px !important;
+}
+
+
+
+input[type=range] {
+    margin: auto;
+    outline: none;
+    padding: 0;
+    width: 640px;
+    height: 4px;
+    background-color: #dedede;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff1100), color-stop(100%, #ff1100));
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 14px;
+    width: 18px;
+    border: 0;
+    background: #fff;
+    border: 1px solid #777;
+    border-radius: 8px;
+    box-shadow: 0 0 1px 0px rgba(0,0,0,0.1);
+    -webkit-appearance: none;
+}
+
+div.hbcom {
+    margin: 0.5rem;
+    height : 80px;
+    cursor : pointer;
+    overflow : hidden;
+    min-width : 300px;
+}
+
+div.h:hover {
+    background-color: rgba(91, 51, 143, 0.5);
+}
+
+.activevideo {
+    background-color: rgba(91, 51, 143, 0.3);
 }
