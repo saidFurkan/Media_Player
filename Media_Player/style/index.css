@@ -1,0 +1,34 @@
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 5vh;
+    right: 20px;
+    z-index: 9;
+    max-width: 380px;
+    border-radius: 10px; 
+    border: 3px solid;
+    border-color: rgb(99, 100, 153); 
+    color:rgb(240, 240, 240); 
+    background-image: linear-gradient(to bottom, #53224d 20%, #353552 80%);
+    box-shadow: 0px 5px 36px 19px rgba(71,16,71,1);
+  }
+
+.blur{
+    filter: blur(2px);
+}
+
+input[type=text], input[type=number], input[type=email], input[type=password] {
+    border-radius: 5px;
+}
+
+.disabled { 
+    pointer-events: none; 
+  -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; 
+  user-select: none;
+}
+.disabled *:focus { outline: 0; }
+
+a.nav_a {
+  color:lightpink; 
+  cursor: pointer;
+}

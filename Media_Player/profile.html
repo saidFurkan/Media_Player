@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/wave.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Kadwa' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css" id="theme-styles">
+
+    <style>
+        p{
+            margin: 0px;
+        }
+        input{
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body style="color:gainsboro; font-family: 'Kadwa';font-size: 20px;">
+
+    <nav class="nav nav-pills align-items-center">
+        <a class="nav-link " href="index.html"> <img src="icons/logo.png" alt="Logo" style="width:100px;height:60px;"> </a>
+        <a class="nav-link " href="index.html" style="color:lightpink; cursor: pointer;"> Home </a> 
+        <a class="nav-link" onclick="goMedia('music')" style="color:lightpink; cursor: pointer;">Audio</a>
+        <a class="nav-link" onclick="goMedia('video')" style="color:lightpink; cursor: pointer;">Video</a>
+        <a class="nav-link" id="profile" style="border-bottom: 1px groove; background-color:transparent; color: white; cursor: pointer;">Profile</a>
+        <a class="nav-link" id="logout" onclick="logout()" style="color:lightpink; cursor: pointer;" >Logout</a>
+    </nav>
+
+    <div class="container centerPage" style="margin-top: 15vh;  height: 75vh;">
+        
+
+        <p type="text" id="userName" class="mb-3"></p>
+
+        <p>Name : </p>
+        <input type="text" id="name">
+
+        <p>E-mail : </p>
+        <input type="email" id="email">
+
+        <p>Age : </p>
+        <input type="number" id="age">
+
+        <p>Password : </p>
+        <input type="password" id="pwd">
+<br>
+        <button class="btn btn-primary p-2 mt-3" onclick="update()">Bilgileri Güncelle</button>
+    </div>
+    
+
+
+    <div class="waveWrapper waveAnimation">
+        <div class="waveWrapperInner bgTop">
+        <div class="wave waveTop" style="background-image: url('style/wave-top.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgMiddle">
+        <div class="wave waveMiddle" style="background-image: url('style/wave-mid.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+        <div class="wave waveBottom" style="background-image: url('style/wave-bot.png')"></div>
+        </div>
+    </div>
+
+
+
+<script src="scripts/profileScript.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>
